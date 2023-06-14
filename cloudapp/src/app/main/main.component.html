@@ -1,9 +1,6 @@
-<div *ngIf="entities$ | async as entities">
-  <ng-container 
-    *ngIf="entities.length > 0; then entitylist; else noentities"
-  ></ng-container>
-  <ng-template #noentities>
+<div>
     <h3>Number of users in each user-group:</h3>
+
     <table>
       <tr>
         <th>Group</th>
@@ -15,10 +12,4 @@
       </tr>
     </table>
 
-  </ng-template>
-
-  
-</div>
-<div class="loading-shade" *ngIf="loading">
-  <mat-spinner diameter="50"></mat-spinner>
 </div>
