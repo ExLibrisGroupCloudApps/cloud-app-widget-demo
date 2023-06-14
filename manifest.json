@@ -1,0 +1,8 @@
+{
+   "id": "widget-demo",
+   "title": "Widget demo",
+   "subtitle": "Demonstrating Cloud App as a widget",
+   "author": "My Name",
+   "isWidget": true,
+   "widgetHeightPx": 150
+}
