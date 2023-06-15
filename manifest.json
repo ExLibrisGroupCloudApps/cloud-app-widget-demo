@@ -2,7 +2,12 @@
    "id": "widget-demo",
    "title": "Widget demo",
    "subtitle": "Demonstrating Cloud App as a widget",
-   "author": "My Name",
+   "author": "Ori Miller",
+   "description": "Might helps developers with building similar apps",
+   "icon": {
+      "type": "url",
+      "value": "/assets/logo_widget_cloud_app.png"
+   },
    "isWidget": true,
    "widgetHeightPx": 150
 }
