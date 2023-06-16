@@ -1,9 +1,5 @@
-import { Observable  } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CloudAppRestService, CloudAppEventsService, Request, HttpMethod, 
-  Entity, RestErrorResponse, AlertService } from '@exlibris/exl-cloudapp-angular-lib';
-import { MatRadioChange } from '@angular/material/radio';
+import { CloudAppRestService } from '@exlibris/exl-cloudapp-angular-lib';
 
 @Component({
   selector: 'app-main',
@@ -12,47 +8,26 @@ import { MatRadioChange } from '@angular/material/radio';
 })
 export class MainComponent implements OnInit, OnDestroy {
 
-  loading = false;
-  selectedEntity: Entity;
-  apiResult: any; 
   userGroups: any[] = [];
-
-  entities$: Observable<Entity[]> = this.eventsService.entities$
-  .pipe(tap(() => this.clear()))
 
   constructor(
     private restService: CloudAppRestService,
-    private eventsService: CloudAppEventsService,
-    private alert: AlertService 
   ) { }
 
   ngOnInit() {
     this.restService.call('/conf/code-tables/UserGroups').subscribe(res=>{
       res.row.forEach(row => {
-        this.restService.call('/users?q=user_group~'+row.code).subscribe(users=>{
-          let group: string = row.description + " ("+row.code+")";
+        this.restService.call('/users?q=user_group~'+row.code+'&limit=1').subscribe(users=>{
+          let group: string = row.description;
+          let code: string = row.code;
           let amount: number = users.total_record_count;
-          this.userGroups.push(  { "group": group , "amount": amount } );
+          this.userGroups.push(  { "group": group, "code": code, "amount": amount } );
         });
       });
     });
   }
 
-
   ngOnDestroy(): void {
   }
 
-  clear() {
-    this.apiResult = null;
-    this.selectedEntity = null;
-  }
-
-  private tryParseJson(value: any) {
-    try {
-      return JSON.parse(value);
-    } catch (e) {
-      console.error(e);
-    }
-    return undefined;
-  }
 }

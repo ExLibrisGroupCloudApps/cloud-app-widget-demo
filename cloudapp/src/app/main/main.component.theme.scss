@@ -1,8 +1,15 @@
 @mixin main-component-theme($theme, $typgraphy) {
-  div.highlight {
+  table {
     border: mat-color(map-get($theme, primary)) solid 2px;
     background-color: mat-color(map-get($theme, primary), lighter);
     padding: 5px;
     font-weight: bolder;
+  }
+  th{
+    border: mat-color(map-get($theme, primary)) solid 1px;
+    border-bottom: mat-color(map-get($theme, primary)) solid 2px;
+  }
+  td{
+    border: mat-color(map-get($theme, primary)) solid 1px;
   }
 }
