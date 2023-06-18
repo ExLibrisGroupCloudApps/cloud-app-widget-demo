@@ -1,6 +1,6 @@
 {
    "id": "widget-demo",
-   "title": "Widget demo",
+   "title": "Number of users in each user-group",
    "subtitle": "Demonstrating Cloud App as a widget",
    "author": "Ori Miller",
    "description": "Can be helpful for developers building similar apps",
